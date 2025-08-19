@@ -68,6 +68,8 @@ Open in browser:
 http://localhost:8000
 
 📂 Project Structure
+
+```sh
 Nazar/
 ├── db/                # Database functions
 ├── handlers/          # HTTP Handlers
@@ -77,31 +79,20 @@ Nazar/
 ├── main.go            # Entry point
 ├── go.mod
 └── README.md
+```
 
-🔮 Roadmap
+## 🔮 Roadmap
 
- User authentication (public users)
+1. User authentication (public users)
+2. Article comments
+3. Image uploads
+4. Docker support
+5. Deploy to cloud (Render/Heroku)
 
- Article comments
+## 🤝 Contributing
 
- Image uploads
-
- Docker support
-
- Deploy to cloud (Render/Heroku)
-
-🤝 Contributing
-
-Fork the project
-
-Create a feature branch (git checkout -b feature/new-feature)
-
-Commit changes (git commit -m "Add new feature")
-
-Push to branch (git push origin feature/new-feature)
-
-Open a Pull Request
-
-📜 License
-
-This project is licensed under the MIT License.
+1. Fork the project
+2. Create a feature branch (git checkout -b feature/new-feature)
+3. Commit changes (git commit -m "Add new feature")
+4. Push to branch (git push origin feature/new-feature)
+5. Open a Pull Request
