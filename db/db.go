@@ -15,9 +15,11 @@ import (
 var Client *mongo.Client
 
 func ConnectMongo() error {
-	err := godotenv.Load()
-	if err != nil {
-		log.Println("Warning: .env file not found, relying on system environment variables")
+
+	if os.Getenv("GO_ENV") != "production" {
+		if err := godotenv.Load(); err != nil {
+			log.Println("Warning: .env file not found, relying on system environment variables")
+		}
 	}
 
 	uri := os.Getenv("MONGO_URI")

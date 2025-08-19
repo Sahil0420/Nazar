@@ -13,9 +13,10 @@ import (
 
 func main() {
 	// --- Configuration ---
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
+	if os.Getenv("GO_ENV") != "production" {
+		if err := godotenv.Load(); err != nil {
+			log.Println("Warning: .env file not found, relying on system environment variables")
+		}
 	}
 
 	adminPass := os.Getenv("ADMIN_PASSPHRASE")
