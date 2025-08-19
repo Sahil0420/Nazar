@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- The .Title is passed from the handler -->
+    <title>{{ .Title }}</title>
+    <link rel="stylesheet" href="/static/dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <div class="dashboard-header">
+        <h1>Welcome to the Dashboard</h1>
+        <a href="/admin/logout" class="logout-btn">Logout</a>
+      </div>
+
+      <!-- Section for existing articles -->
+      <div class="list-container">
+        <h2>Existing Articles</h2>
+
+        <!-- Search Form -->
+        <div class="search-container">
+          <form action="/admin/dashboard" method="get" class="search-form">
+            <input
+              type="search"
+              name="q"
+              class="search-input"
+              placeholder="Search articles by title..."
+              value="{{.SearchTerm}}"
+            />
+            <button type="submit" class="search-btn">Search</button>
+          </form>
+        </div>
+
+        <!-- Articles Table -->
+        {{if .Articles}}
+        <table class="list-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{range .Articles}}
+            <tr>
+              <td><img src="{{.ImageUrl}}" alt="{{.Title}} Poster" /></td>
+              <td>{{.Title}}</td>
+              <td>
+                <form
+                  class="delete-form"
+                  action="/admin/delete-article/"
+                  method="post"
+                  onsubmit="return confirm('Are you sure you want to delete this article?');"
+                >
+                  <input type="hidden" name="article_id" value="{{.ID.Hex}}" />
+                  <button type="submit" class="delete-btn">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {{end}}
+          </tbody>
+        </table>
+        {{else}}
+        <p>No articles found.</p>
+        {{end}}
+
+        <!-- Pagination -->
+        <div class="pagination-container">
+          {{with .Pagination}} {{if .HasPrev}}
+          <a
+            href="/admin/dashboard?page={{.PrevPage}}&q={{$.SearchTerm}}"
+            class="pagination-link"
+            >← Previous</a
+          >
+          {{else}}
+          <span class="pagination-link disabled">← Previous</span>
+          {{end}}
+
+          <span class="pagination-current"
+            >Page {{.CurrentPage}} of {{.TotalPages}}</span
+          >
+
+          {{if .HasNext}}
+          <a
+            href="/admin/dashboard?page={{.NextPage}}&q={{$.SearchTerm}}"
+            class="pagination-link"
+            >Next →</a
+          >
+          {{else}}
+          <span class="pagination-link disabled">Next →</span>
+          {{end}} {{end}}
+        </div>
+      </div>
+
+      <!-- Success Messages -->
+      {{if .SuccessMessage}}
+      <div class="success-message">{{.SuccessMessage}}</div>
+      {{end}} {{if .CategorySuccessMessage}}
+      <div class="success-message">{{.CategorySuccessMessage}}</div>
+      {{end}}
+
+      <!-- Forms Section -->
+      <div class="forms-wrapper">
+        <!-- UPDATED: Use the new form templates -->
+        <div>{{ template "add_article_form" .}}</div>
+        <div>{{ template "add_category_form" .}}</div>
+      </div>
+    </div>
+  </body>
+</html>

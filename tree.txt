@@ -1,0 +1,48 @@
+.
+├── data
+│   └── movies.json
+├── data.sql
+├── db
+│   ├── articles.go
+│   ├── categories.go
+│   └── db.go
+├── go.mod
+├── go.sum
+├── handlers
+│   ├── admin_login_handlers.go
+│   ├── article_handlers.go
+│   ├── dashboard_handler.go
+│   ├── handlers.go
+│   └── page_handler.go
+├── main.go
+├── models
+│   ├── article.go
+│   └── category.go
+├── README.md
+├── schema.sql
+├── static
+│   ├── article-card.css
+│   ├── article.css
+│   ├── assets
+│   │   ├── broadcast-svgrepo-com.svg
+│   │   └── menu-burger-horizontal-svgrepo-com.svg
+│   ├── dashboard.css
+│   ├── header.css
+│   ├── script.js
+│   └── style.css
+├── templates
+│   ├── admin_login.html
+│   ├── article.html
+│   ├── base.html
+│   ├── components
+│   │   ├── add_article_form.html
+│   │   ├── add_category_form.html
+│   │   └── header.html
+│   ├── dashboard.html
+│   └── index.html
+├── tree.txt
+└── utils
+    ├── markdown.go
+    └── slug_gen.go
+
+9 directories, 36 files

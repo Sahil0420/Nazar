@@ -1,0 +1,297 @@
+/* ===== General Layout ===== */
+body,
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 20px;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ===== Header Section ===== */
+.dashboard-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #1c1e21;
+}
+
+.logout-btn {
+  text-decoration: none;
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+/* ===== Success Messages ===== */
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+/* ===== Article Table Section ===== */
+.list-container {
+  overflow-x: auto;
+}
+
+.list-container h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.list-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.list-table th,
+.list-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.list-table th {
+  background-color: #f8f9fa;
+}
+
+/* ===== Article Thumbnail Images ===== */
+.list-table td img {
+  width: 80px !important;
+  height: 80px !important;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ===== Delete Button ===== */
+.delete-form {
+  margin: 0;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* ===== Forms Section ===== */
+.forms-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.forms-wrapper > div {
+  flex: 1 1 45%;
+  min-width: 280px;
+}
+
+.form-container {
+  padding: 0;
+  box-shadow: none;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.checkbox-group label {
+  display: inline-block;
+  margin-right: 15px;
+  font-weight: normal;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* ===== Search Section ===== */
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.search-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ===== Pagination ===== */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.pagination-link {
+  text-decoration: none;
+  color: #007bff;
+  background-color: white;
+  padding: 8px 15px;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}
+
+.pagination-link.disabled {
+  color: #6c757d;
+  background-color: #e9ecef;
+  pointer-events: none;
+}
+
+.pagination-current {
+  font-weight: bold;
+}
+
+/* ===== Action Buttons ===== */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.action-btn {
+  padding: 15px;
+  border-radius: 3px;
+  border: 1px solid #007bff;
+  background-color: #fff;
+  color: #007bff;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  flex: 1;
+  flex-shrink: 2;
+}
+
+.action-btn:hover {
+  background-color: #e7f3ff;
+}
+
+.form-actions .submit-btn {
+  flex: 1;
+  flex-shrink: 2;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 1024px) {
+  .forms-wrapper {
+    flex-direction: column;
+  }
+  .forms-wrapper > div {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .list-table th,
+  .list-table td {
+    font-size: 14px;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="date"],
+  .form-group textarea {
+    width: 100%;
+  }
+
+  .submit-btn {
+    font-size: 16px;
+  }
+}

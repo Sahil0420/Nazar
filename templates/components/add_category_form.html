@@ -1,0 +1,49 @@
+{{define "add_category_form"}}
+
+<div class="form-container">
+  <div class="form-header">
+    <h1>Add New Categories</h1>
+  </div>
+
+  <!-- UPDATED: The form action now points to the correct handler route -->
+  <form action="/admin/add-category/" method="post">
+    <div id="category-inputs-container">
+      <div class="form-group">
+        <input
+          type="text"
+          name="category_name[]"
+          placeholder="Enter a new category name"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" id="add-more-btn" class="action-btn">
+        Add More
+      </button>
+      <button type="submit" class="submit-btn">Submit</button>
+    </div>
+  </form>
+</div>
+
+<!-- The JavaScript is perfect and does not need any changes. -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const addMoreBtn = document.getElementById("add-more-btn");
+    const container = document.getElementById("category-inputs-container");
+
+    addMoreBtn.addEventListener("click", function () {
+      const newFormGroup = document.createElement("div");
+      newFormGroup.className = "form-group";
+      const newInput = document.createElement("input");
+      newInput.type = "text";
+      newInput.name = "category_name[]";
+      newInput.placeholder = "Another category name";
+      newInput.required = true;
+      newFormGroup.appendChild(newInput);
+      container.appendChild(newFormGroup);
+    });
+  });
+</script>
+{{end}}

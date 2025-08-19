@@ -1,0 +1,65 @@
+{{define "content"}}
+<section id="dashboard-section" class="content-section active">
+  <div class="section-header">
+    <h3>
+      <img
+        src="/static/assets/broadcast-svgrepo-com.svg"
+        style="transform: rotate(-30deg)"
+      />
+      {{.PageTitle}}
+    </h3>
+  </div>
+
+  <div class="article_card_container">
+    {{range .Articles}}
+    <div class="blog-card">
+      <div class="meta">
+        <div class="photo" style="background-image: url('{{.ImageUrl}}')"></div>
+        <ul class="details">
+          <li class="author">By {{.Author}}</li>
+          <li class="date">{{.CreatedAt.Format "Jan 02, 2006"}}</li>
+          <li class="tags">
+            <ul>
+              <li><a href="#">Article</a></li>
+              <li><a href="#">Read</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="description">
+        <h1>{{.Title}}</h1>
+        <h2>by {{.Author}}</h2>
+        <p>Click below to read the full article.</p>
+        <p class="read-more">
+          <a href="/article/{{.CategorySlug}}/{{.Slug}}">Read More</a>
+        </p>
+      </div>
+    </div>
+    {{else}}
+    <p style="text-align: center; margin-top: 50px">No articles found.</p>
+    {{end}}
+  </div>
+
+  <div class="pagination-container">
+    {{with .Pagination}} {{if .HasPrev}}
+    <a href="/?q={{$.SearchTerm}}&page={{.PrevPage}}" class="pagination-link"
+      >← Previous</a
+    >
+    {{else}}
+    <span class="pagination-link disabled">← Previous</span>
+    {{end}}
+
+    <span class="pagination-current">
+      Page {{.CurrentPage}} of {{.TotalPages}}
+    </span>
+
+    {{if .HasNext}}
+    <a href="/?q={{$.SearchTerm}}&page={{.NextPage}}" class="pagination-link"
+      >Next →</a
+    >
+    {{else}}
+    <span class="pagination-link disabled">Next →</span>
+    {{end}} {{end}}
+  </div>
+</section>
+{{end}}

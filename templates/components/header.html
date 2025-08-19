@@ -1,0 +1,45 @@
+{{define "header"}}
+<div class="wrapper">
+  <nav>
+    <input type="checkbox" id="show-search" />
+    <input type="checkbox" id="show-menu" />
+    <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+    <div class="content">
+      <div class="logo"><a href="#">Nazar</a></div>
+      <ul class="links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li>
+          <a href="#" class="desktop-link"
+            >Categories<span style="position: relative; top: -5%"
+              >&#8964;</span
+            ></a
+          >
+          <input type="checkbox" id="show-features" />
+          <label for="show-features" class="submenu-header">
+            Categories<span class="arrow"></span>
+            <!-- Right triangle -->
+          </label>
+
+          <ul>
+            {{ range .Categories }}
+            <li><a href="/category/{{ .Slug }}">{{ .Name }}</a></li>
+            {{ else }}
+            <li><em>No categories yet</em></li>
+            {{ end }}
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <label for="show-search" class="search-icon"
+      ><i class="fas fa-search"></i
+    ></label>
+    <form action="/" class="search-box" method="GET">
+      <input type="text" name="q" placeholder="Type Something to Search..." required />
+      <button type="submit" class="go-icon">
+        <i class="fas fa-long-arrow-alt-right"></i>
+      </button>
+    </form>
+  </nav>
+</div>
+{{end}}

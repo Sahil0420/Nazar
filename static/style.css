@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #1a1a1a;
+  --secondary-color: #2d2d2d;
+  --accent-color: #ff6b6b;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --card-bg: #333333;
+  --hover-color: #444444;
+  --border-color: #555555;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+main {
+  width: 80%;
+  margin-top: 5rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Trending Section */
+.trending-container {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 180px;
+}
+
+.trending-movies {
+  display: flex;
+  overflow-x: auto;
+  padding: 0.25rem;
+  /* gap: 0.75rem; */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Smaller trending cards */
+.movie-card.trending-card {
+  aspect-ratio: 7 / 9;
+  width: 160px;
+  flex: 0 0 auto; /* prevent shrinking in flexbox */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-card.trending-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* ✅ Show the whole image without cropping */
+  display: block;
+  object-position: center;
+}
+
+.movie-card.trending-card h3 {
+  font-size: 1rem;
+}
+
+.tags {
+  font-size: 0.7rem;
+  display: flex;
+  gap: 0.2rem;
+  margin: 0 0.5rem;
+  a {
+    color: var(--text-primary);
+  }
+}
+
+.movie-card.trending-card p {
+  font-size: 0.8rem;
+  margin: 0 0.75rem 0.75rem;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 40px 0;
+}
+.pagination-link {
+  text-decoration: none;
+  color: #007bff;
+  background-color: white;
+  padding: 8px 15px;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}
+.pagination-link.disabled {
+  color: #6c757d;
+  background-color: #e9ecef;
+  pointer-events: none;
+}
+.pagination-current {
+  font-weight: bold;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: var(--secondary-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .navbar.show {
+    display: flex;
+  }
+
+  .navbar a {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .dropdown-content {
+    position: static;
+    display: block;
+    background-color: var(--hover-color);
+    box-shadow: none;
+    margin-left: 1rem;
+  }
+
+  .search-box input {
+    width: 200px;
+  }
+
+  .search-box input:focus {
+    width: 220px;
+  }
+
+  .content-section {
+    padding: 1rem;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .filter-controls {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .filter-controls select {
+    width: 100%;
+  }
+
+  .trending-movies {
+    gap: 1rem;
+  }
+
+  .movie-card.small-card {
+    min-width: 100%;
+    display: flex;
+  }
+
+  .movie-card img {
+    height: 225px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h2 a {
+    font-size: 1.4rem;
+  }
+
+  .search-box {
+    display: none;
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Loading Animation */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.spinner {
+  border: 4px solid var(--border-color);
+  border-top: 4px solid var(--accent-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Utility Classes */
+.hidden {
+  display: none !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
