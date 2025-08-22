@@ -20,8 +20,6 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 		page = 1
 	}
 
-	// Fetch the paginated list of all articles for the current page.
-
 	searchTerm := r.URL.Query().Get("q")
 
 	articles, totalPages, err := db.GetAllArticlesPaginated(searchTerm, page, public_page_size)
@@ -47,7 +45,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 		"Title":      "Nazar - Home",
 		"PageTitle":  pageTitle,
 		"Categories": categories,
-		"Articles":   articles, // Renamed from Movies
+		"Articles":   articles,
 		"Pagination": PaginationData{
 			HasPrev:     page > 1,
 			PrevPage:    page - 1,
@@ -58,12 +56,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 		},
 	}
 
-	// Assuming 'templates' is an accessible variable holding your parsed templates
-	err = templates.ExecuteTemplate(w, "base.html", data)
-	if err != nil {
-		log.Println("Index Template Error:", err)
-		http.Error(w, "Something went wrong while rendering the page.", http.StatusInternalServerError)
-	}
+	Render(w, "base.html", data)
 }
 
 func ArticleHandler(w http.ResponseWriter, r *http.Request) {

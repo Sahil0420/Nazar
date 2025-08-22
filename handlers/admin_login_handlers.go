@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-// AdminLoginHandler remains the same, it's a good router.
+
 func AdminLoginHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
@@ -19,7 +19,6 @@ func AdminLoginHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// CORRECTED GET handler
 func handleAdminLoginGet(w http.ResponseWriter, r *http.Request) {
 
 	data := map[string]interface{}{"Title": "Admin Access"}

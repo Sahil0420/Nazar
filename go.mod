@@ -10,7 +10,9 @@ require (
 )
 
 require (
+	github.com/alecthomas/chroma/v2 v2.2.0 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
+	github.com/dlclark/regexp2 v1.7.0 // indirect
 	github.com/golang/snappy v1.0.0 // indirect
 	github.com/gorilla/css v1.0.1 // indirect
 	github.com/klauspost/compress v1.16.7 // indirect
@@ -18,6 +20,7 @@ require (
 	github.com/xdg-go/scram v1.1.2 // indirect
 	github.com/xdg-go/stringprep v1.0.4 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20240726163527-a2c0da244d78 // indirect
+	github.com/yuin/goldmark-highlighting/v2 v2.0.0-20230729083705-37449abec8cc // indirect
 	golang.org/x/crypto v0.33.0 // indirect
 	golang.org/x/net v0.26.0 // indirect
 	golang.org/x/sync v0.11.0 // indirect

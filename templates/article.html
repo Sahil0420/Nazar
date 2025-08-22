@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/static/article.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/katex/katex.min.css" />
+    <link rel="stylesheet" href="/static/monokai.css">
     <script defer src="/static/katex/katex.min.js"></script>
     <script defer src="/static/katex/contrib/auto-render.min.js"></script>
   </head>
@@ -13,12 +14,10 @@
       <a href="/" class="back-link">← Back to Home</a>
 
       <div class="article-detail">
-        <!-- Left Side: Poster -->
         <div class="poster-container">
           <img class="poster" src="{{ .ImageUrl }}" alt="{{ .Title }} image" />
         </div>
 
-        <!-- Right Side: Core Info -->
         <div class="core-info">
           <h1>{{ .Title }}</h1>
           <p><strong>Author:</strong> {{ .Author }}</p>
@@ -31,7 +30,6 @@
           </p>
         </div>
 
-        <!-- Full Width: Description -->
         <div class="description-container">
           <hr style="margin-bottom: 1rem" />
           <div class="prose">{{ .DescriptionHTML }}</div>

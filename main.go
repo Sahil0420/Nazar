@@ -12,11 +12,17 @@ import (
 )
 
 func main() {
-	// --- Configuration ---
+
+	// ----- Configuration -----
 	if os.Getenv("GO_ENV") != "production" {
 		if err := godotenv.Load(); err != nil {
 			log.Println("Warning: .env file not found, relying on system environment variables")
 		}
+	}
+
+	blogName := os.Getenv("BLOG_NAME")
+	if blogName == "" {
+		blogName = "Blog Name"
 	}
 
 	adminPass := os.Getenv("ADMIN_PASSPHRASE")
@@ -24,14 +30,15 @@ func main() {
 		log.Fatal("ADMIN_PASSPHRASE not set")
 	}
 
-	// --- Database ---
+	// ------ Database Conection -----
 	db.ConnectMongo()
 
-	// function  that you wanna use in html
+	// functions which I wanna use in html I have send them like this
 	funcMap := template.FuncMap{
 		"add": func(a, b int) int { return a + b },
 		"len": func(s []string) int { return len(s) },
 	}
+
 	// --- Template Parsing ---
 	templates := template.Must(
 		template.New("").Funcs(funcMap).ParseFiles(
@@ -50,6 +57,7 @@ func main() {
 	// --- Dependency Injection ---
 	// Give the handlers access to the parsed templates and the passphrase.
 	handlers.InitTemplates(templates)
+	handlers.SetBlogName(blogName)
 	handlers.SetAdminPassphrase(adminPass)
 
 	// --- Server Setup ---

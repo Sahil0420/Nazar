@@ -27,7 +27,6 @@ func AddCategoryHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// This assumes your form has fields like <input name="category_name[]">
 	categoryNames := r.Form["category_name[]"]
 	if len(categoryNames) == 0 {
 		http.Redirect(w, r, "/admin/dashboard", http.StatusSeeOther)
@@ -73,21 +72,18 @@ func CategoryHandler(w http.ResponseWriter, r *http.Request) {
 
 	categorySlug := parts[1]
 
-	// Get category details
 	category, err := db.GetCategoryBySlug(categorySlug)
 	if err != nil {
 		http.NotFound(w, r)
 		return
 	}
 
-	// Pagination
 	pageStr := r.URL.Query().Get("page")
 	page, err := strconv.Atoi(pageStr)
 	if err != nil || page < 1 {
 		page = 1
 	}
 
-	// Fetch all articles for this category
 	articles, totalPages, err := db.GetArticlesByCategory(category.ID, page, public_page_size)
 	if err != nil {
 		log.Println("Error fetching category articles:", err)
@@ -99,7 +95,6 @@ func CategoryHandler(w http.ResponseWriter, r *http.Request) {
 		articles[i].CategorySlug = category.Slug
 	}
 
-	// Fetch categories for header
 	categories, err := db.GetAllCategories()
 	if err != nil {
 		log.Println("Error fetching categories:", err)
@@ -120,9 +115,6 @@ func CategoryHandler(w http.ResponseWriter, r *http.Request) {
 		},
 	}
 
-	err = templates.ExecuteTemplate(w, "base.html", data)
-	if err != nil {
-		log.Println("Category Template Error:", err)
-		http.Error(w, "Something went wrong while rendering category page.", http.StatusInternalServerError)
-	}
+	Render(w, "base.html", data)
+
 }

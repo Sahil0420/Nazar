@@ -14,7 +14,6 @@ import (
 )
 
 func AddArticleHandler(w http.ResponseWriter, r *http.Request) {
-	// 1. FIXED authentication logic.
 	cookie, err := r.Cookie("admin-session")
 	if err == http.ErrNoCookie || cookie.Value != "authenticated" {
 		http.Error(w, "Unauthorized", http.StatusUnauthorized)
@@ -55,7 +54,7 @@ func AddArticleHandler(w http.ResponseWriter, r *http.Request) {
 		Description: r.FormValue("description"),
 		Author:      r.FormValue("author"),
 		ImageUrl:    r.FormValue("image_url"),
-		Category:    categoryObjectID, // Assign the cleaned slice
+		Category:    categoryObjectID, 
 		CreatedAt:   time.Now(),
 		UpdatedAt:   time.Now(),
 	}
