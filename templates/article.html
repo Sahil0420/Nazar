@@ -4,10 +4,19 @@
     <title>{{ .Title }}</title>
     <link rel="stylesheet" href="/static/article.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/static/katex/katex.min.css" />
-    <link rel="stylesheet" href="/static/monokai.css">
-    <script defer src="/static/katex/katex.min.js"></script>
-    <script defer src="/static/katex/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="/static/monokai.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    ></script>
   </head>
   <body>
     <div class="page-container">
@@ -46,7 +55,7 @@
             { left: "\\[", right: "\\]", display: true },
           ],
           throwOnError: false,
-          ignoredTags:[]
+          ignoredTags: [],
         });
       });
     </script>
