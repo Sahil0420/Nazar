@@ -23,7 +23,7 @@ func init() {
 			highlighting.NewHighlighting(
 				highlighting.WithStyle("monokai"),
 				highlighting.WithFormatOptions(
-					chromahtml.WithLineNumbers(true),
+					chromahtml.WithLineNumbers(false),
 					chromahtml.WithClasses(true),
 				),
 			),
